@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>PHAGEBORN | Guide</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/input.css">
+</head>
+<body class="bg-[#181230] overflow-x-hidden">
+    <header class="flex md:justify-center items-center text-white  gap-[40px] h-[100px]" >
+        <div class="logo">
+            <img src="img/logo.png" alt="logo" class="w-[100px]">
+        </div>
+        <div class="navbar flex  w-[75%] justify-between text-[20px] items-center "  >
+            <a href="guide.html">Guide</a>
+            <a href="market.html">Market</a>
+            <a href="index.html" class="text-[40px] ">Home</a>
+            <a href="deck.html">My Deck</a>
+            <a href="favorites.html">Favorite</a>
+        </div>
+        <button class="text-[20px] border-4 border-[#FF282C] p-[15px] rounded-[25px] justify-self-center flex bg-[#FF282C] cartpage">Cart</button>
+        <span class="text-[30px] md:hidden lg:hidden menu-btn">☰</span>
+    </header>
+    <div class="menu_slider fixed top-0 right-0 h-full w-[320px] bg-gray-900 text-white p-5 shadow-2xl translate-x-full  transition-transform duration-300 z-60 ">
+        <span class="fixed close-menu">X</span>
+        <div class="flex flex-col items-center justify-center h-full gap-10 ">
+            <a href="guide.html">Guide</a>
+            <a href="market.html">Market</a>
+            <a href="index.html" class="text-[40px]">Home</a>
+            <a href="deck.html">My Deck</a>
+            <a href="favorites.html">Favorite</a>
+            <button class="text-[20px] border-4 border-[#FF282C] p-[15px] rounded-[25px] justify-self-center flex bg-[#FF282C] cartpage">Cart</button>
+        </div>
+    </div>
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-[320px] bg-gray-900 text-white p-5 shadow-2xl translate-x-full transition-transform duration-300 z-60 flex flex-col">
+    
+        <div class="flex-1 mb-4 overflow-y-scroll cartscrollbar">
+            <span class="cursor-pointer closeCart">X</span>
+            <h2 class="mb-4 text-xl font-bold text-center">Cart</h2>
+            <div id="panier" class="flex-1 mb-4 data"></div>
+        </div>
+
+        <div id="totalContainer" class="pt-4 border-t border-gray-700">
+        <div class="flex justify-between mb-3 text-lg font-semibold">
+            <span>Total</span>
+            <span id="totalPrice" class="text-yellow-400">0 EC</span>
+        </div>
+        <button id="checkoutBtn" class="w-full py-2 mb-2 transition bg-green-500 rounded-lg hover:bg-green-600">Acheter</button>
+        <button class="w-full py-2 bg-red-500 rounded-lg closeCart">Close</button>
+        </div>
+
+    </div>
+
+    <div class="guide-hidden z-[-1] relative">
+    <div class="guide-hidden bg-[url('/img/guide-bg.png')] bg-cover bg-no-repeat h-[100vh] z-[0]"></div>
+    <div class="guide-hidden bg-gradient-to-b from-black to-[#181230] h-[300px]  
+    w-[150%] absolute left-[-25%] top-[90vh] w-screen
+    blur-[20px]"></div>
+    </div>
+    <section class="top-sec-guide text-center w-[90%] flex flex-col justify-self-center gap-[20px] items-center pb-[50px]">
+        <h1 class="text-[#E6CF39] text-[48px] font-bold ">FEATURED</h1>
+        <h2 class="text-[#E6CF39] text-[36px] font-extrabold">Aprendre a Jouer</h2>
+        <p>
+            Le monde est en guerre, et les factions s'affrontent pour le pouvoir.
+            Maîtriser les règles de Balance of Power est la clef pour être une force 
+            de paix... ou de destruction. Ce guide vous aidera à prendre le contrôle du 
+            champ de bataille. Forgez votre destin.
+        </p>
+        <a href="#" class= "text-black bg-[#E6CF39] w-[350px] md:w-[446px] h-[81px] text-[17px] flex items-center justify-center rounded-[21px]">Commencez votre apprentissage</a>
+    </section>
+    <section class="sec-center w-[90%]  flex flex-col justify-self-center items-center gap-10 pb-[50px]">
+        <h2 class="text-[#E6CF39] md:text-[40px] text-center text-[30px]">Comment Jouer</h2>
+        <div class="flex flex-col justify-between text-center md:flex-row">
+            <div class="flex flex-col items-center md:w-[30%] gap-[20px]">
+                <img src="img/comment-jouer (1).png" alt="">
+                <h4 class="text-[30px] text-[#E6CF39] ">
+                    Construisez votre deck
+                </h4>
+                <p  class="w-[80%]">
+                    Choisissez des cartes de différentes factions et capacités pour créer un deck fort et équilibré.
+                </p>
+            </div>
+            <div class="flex flex-col items-center md:w-[30%] gap-[20px]">
+                <img src="img/comment-jouer (2).png" alt="">
+                <h4 class="text-[24px] text-[#E6CF39]">
+                    Défiez vos adversaires
+                </h4>
+                <p  class="w-[80%]">
+                    Engagez-vous dans des duels au tour par tour, planifiez stratégiquement et déployez vos cartes.
+                </p>
+            </div>
+            <div class="flex flex-col items-center md:w-[30%] gap-[20px]">
+                <img src="img/comment-jouer (3).png" alt="">
+                <h4 class="text-[24px] text-[#E6CF39]">
+                    Améliorez et échangez
+                </h4>
+                <p  class="w-[80%]">
+                    Évoluez vos cartes et négociez sur le marché pour élargir et renforcer votre collection.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="md:w-[50%]  flex flex-col justify-self-center items-center gap-10 pb-[50px]">
+        <h2 class="text-[#E6CF39] md:text-[40px] text-center text-[30px]">Rarete des cartes</h2>
+        <p class="text-center w-[80%]">
+            Il existe 5 niveaux de rareté dans Balance of Power : <span class="text-[#B0B0B0]">Communes</span>,  <span class="text-[#2DC75C]">Rares</span>, 
+            <span class="text-[#FF6464]">Légendaires</span>,  <span class="text-[#6631D7]">Épiques</span> et  <span class="text-[#FE9F4D]">Mythiques</span>.
+            Chaque niveau détermine la puissance, la fréquence d’apparition et la valeur d’échange de la carte.
+        </p>
+        <div class="rareteicons flex gap-[10%] justify-center ">
+            <img src="img/rarete (1).png" alt="">
+            <img src="img/rarete (2).png" alt="">
+            <img src="img/rarete (3).png" alt="">
+            <img src="img/rarete (4).png" alt="">
+            <img src="img/rarete (5).png" alt="">
+        </div>
+    </section>
+    <section class="md:w-[50%] w-[90%] flex flex-col justify-self-center items-center gap-10 pb-[50px]">
+        <h2 class="text-[#E6CF39] text-[40px]">FAQ</h2>
+
+    <div class="flex flex-col w-full text-center">
+        <div class="faq-item border-b border-[#E6CF39] py-3 cursor-pointer">
+            <p class="question text-[#E6CF39]">Comment vendre une carte ? \/</p>
+            <p class="hidden mt-2 text-gray-300 answer">
+                Rendez-vous sur le Marketplace, sélectionnez la carte dans votre collection, cliquez sur "Vendre" et fixez votre prix. La carte sera visible pour tous les joueurs. Vous recevez les fonds dès qu'un acheteur confirme la transaction.
+            </p>
+        </div>
+
+        <div class="faq-item border-b border-[#E6CF39] py-3 cursor-pointer">
+            <p class="question text-[#E6CF39]">Comment fonctionne le deck ? \/</p>
+            <p class="hidden mt-2 text-gray-300 answer">
+                Votre deck est votre arsenal de combat. Vous devez y inclure entre 30 et 60 cartes avec un maximum de 3 copies par carte (1 seule pour les légendaires). Au début de la partie, vous piochez 5 cartes, puis 1 carte par tour. Construisez un deck équilibré!
+            </p>
+        </div>
+
+        <div class="faq-item border-b border-[#E6CF39] py-3 cursor-pointer">
+            <p class="question text-[#E6CF39]">Comment obtenir des cartes ? \/</p>
+            <p class="hidden mt-2 text-gray-300 answer">
+                Plusieurs méthodes:<br>Boosters: Achetez des packs de 5 cartes aléatoires<br>Récompenses: Gagnez des parties pour débloquer des cartes<br>Marketplace: Achetez des cartes spécifiques à d'autres joueurs<br>Événements: Participez aux tournois et défis spéciaux
+            </p>
+        </div>
+
+        <div class="faq-item border-b border-[#E6CF39] py-3 cursor-pointer">
+            <p class="question text-[#E6CF39]">Que se passe-t-il quand un joueur tue un autre joueur ? \/</p>
+            <p class="hidden mt-2 text-gray-300 answer">
+                Plus la partie est disputée et votre adversaire de haut niveau, plus les récompenses sont généreuses. Les victoires parfaites (sans perdre de PV) offrent des bonus exceptionnels!
+            </p>
+        </div>
+    </div>
+</section>
+    <footer class="bg-[url('/img/footer-bg.png')] bg-cover bg-no-reapet h-[600px] flex flex-col items-center justify-center">
+        <div class="flex w-[80%] md:gap-[25%] justify-center mt-24 navigation-footer">
+            <nav class="flex flex-col">
+                <a href="#">Home</a>
+                <a href="#">Guide</a>
+                <a href="#">My Deck</a>
+                <a href="#">Market</a>
+                <a href="#">Favorite</a>
+            </nav>
+            <nav class="flex flex-col">
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ </a>
+                <a href="#">About Us</a>
+            </nav>
+            <nav class="flex flex-col">
+                <a href="#">Cookies</a>
+                <a href="#">Our Story</a>
+                <a href="#">Our Bakeries</a>
+                <a href="#">Join Our Team</a>
+            </nav>
+        </div>
+        <div class="flex md:gap-8 icons">
+            <img src="/img/instagram (1).png" alt="" class="w-[60px]">
+            <img src="/img/twitter.png" alt="" class="w-[60px]">
+            <img src="/img/windows-logo.png" alt="" class="w-[60px]">
+            <img src="/img/app.png" alt="" class="w-[60px]">
+            <img src="/img/google-play (1).png" alt="" class="w-[60px]">
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
