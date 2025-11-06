@@ -922,6 +922,10 @@ video {
   background-image: url('./img/home-bg.jpg');
 }
 
+.bg-\[url\(\'\/img\/homebg\.jpg\'\)\] {
+  background-image: url('/img/homebg.jpg');
+}
+
 .from-black {
   --tw-gradient-from: #000 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
