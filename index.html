@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>PHAGEBORN | Home</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/input.css">
+</head>
+<body class="bg-[#181230]  ">
+    <header class="flex md:justify-center items-center text-white  gap-[40px] h-[100px]" >
+        <div class="logo">
+            <img src="img/logo.png" alt="logo" class="w-[100px]">
+        </div>
+        <div class="navbar flex  w-[75%] justify-between text-[20px] items-center "  >
+            <a href="guide.html">Guide</a>
+            <a href="market.html">Market</a>
+            <a href="index.html" class="text-[40px] ">Home</a>
+            <a href="deck.html">My Deck</a>
+            <a href="favorites.html">Favorite</a>
+        </div>
+        <button class="text-[20px] border-4 border-[#FF282C] p-[15px] rounded-[25px] justify-self-center flex bg-[#FF282C] cartpage">Cart</button>
+        <span class="text-[30px] hidden menu-btn">☰</span>
+    </header>
+    <div class="menu_slider fixed top-0 right-0 h-full w-[320px] bg-gray-900 text-white p-5 shadow-2xl translate-x-full  transition-transform duration-300 z-60 ">
+        <span class="fixed close-menu">X</span>
+        <div class="flex flex-col items-center justify-center h-full gap-10 ">
+            <a href="guide.html">Guide</a>
+            <a href="market.html">Market</a>
+            <a href="index.html" class="text-[40px]">Home</a>
+            <a href="deck.html">My Deck</a>
+            <a href="favorites.html">Favorite</a>
+            <button class="text-[20px] border-4 border-[#FF282C] p-[15px] rounded-[25px] justify-self-center flex bg-[#FF282C] cartpage">Cart</button>
+        </div>
+    </div>
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-[320px] bg-gray-900 text-white p-5 shadow-2xl translate-x-full transition-transform duration-300 z-60 flex flex-col">
+    
+        <div class="flex-1 mb-4 overflow-y-scroll cartscrollbar">
+            <span class="cursor-pointer closeCart">X</span>
+            <h2 class="mb-4 text-xl font-bold text-center">Cart</h2>
+            <div id="panier" class="flex-1 mb-4 data"></div>
+        </div>
+
+        <div id="totalContainer" class="pt-4 border-t border-gray-700">
+        <div class="flex justify-between mb-3 text-lg font-semibold">
+            <span>Total</span>
+            <span id="totalPrice" class="text-yellow-400">0 EC</span>
+        </div>
+        <button id="checkoutBtn" class="w-full py-2 mb-2 transition bg-green-500 rounded-lg hover:bg-green-600">Acheter</button>
+        <button class="w-full py-2 bg-red-500 rounded-lg closeCart">Close</button>
+        </div>
+
+    </div>
+    
+    <div class="bg-[url('/img/home-bg.jpg')] bg-cover bg-no-reapet h-[100vh]" id="bg-home"></div>
+    <section class="flex flex-col gap-[20px] justify-self-center w-[90%]">
+        <article class="flex flex-col items-center text-center justify-self-center mt-[20px] p-[20px] bg-[#141026] gap-[20px] rounded-[43px]">
+            <h1 class="md:text-[48px] text-[30px] text-[#E6CF39]">Balance Of Power</h1>
+            <p class="w-[90%]">Notre jeu se déroule dans un univers digital où chaque carte représente un personnage unique, un objet spécial ou un pouvoir rare.  Le concept est simple : les joueurs collectionnent, échangent et utilisent leurs cartes pour débloquer de  nouveaux niveaux ou gagner des récompenses exclusives.  C’est un mélange entre stratégie, collection et compétition amusante !</p>
+        </article>
+        <article class="flex justify-between justify-self-center md:gap-32" id="decouvrir_sec">
+            <div class="flex flex-col text-center gap-[20px] rounded-[43px] bg-[#141026] p-[20px] items-center justify-between">
+                <h2 class="md:text-[48px] text-[30px] text-[#E6CF39] ">Découvrir le jeu</h2>
+                <p>
+                    explore our digital card collection, and start  collecting your favorites!  You can buy, trade, and unlock limited-edition   cards by completing challenges or  earning points.
+                </p> 
+                <a href="guide.html" class=" w-[170px] h-[64px] bg-[#E6CF39] text-black text-[32px] rounded-[21px] mt-[35px] flex justify-center items-center">more...</a>
+            </div>
+            <div class="flex flex-col text-center gap-[20px] rounded-[43px] bg-[#141026] p-[20px] items-center justify-between">
+                <h2 class="md:text-[48px] text-[30px] text-[#E6CF39] ">Accéder au marché </h2>
+                <p>
+                    Explore the Market section to discover  exclusive digital cards available for sale or  trade. You can browse by rarity, price, or category, and find the cards that best  complete your collection.
+                </p>
+                <a href="market.html" class=" w-[170px] h-[64px] bg-[#E6CF39] text-black text-[32px] rounded-[21px] flex justify-center items-center">more...</a>
+            </div>
+        </article>
+    </section>
+    <section class="flex flex-col items-center pt-[20px] gap-[50px] pb-[50px]">
+        <section class="card-stack">
+            <article class="card" style="--i: 0">
+                <img src="img/CARDS/ABYSSAL-STALKER.png" alt="">
+            </article>
+
+            <article class="card" style="--i: 1">
+                <img src="img/CARDS/ASHBORN-REVENANT-I.png" alt="">
+            </article>
+
+            <article class="card" style="--i: 2;">
+                <img src="img/CARDS/CERBERUS.png" alt="">
+            </article>
+
+            <article class="card" style="--i: 3;">
+                <img src="img/CARDS/DRIFIWOOD-COLOSSUS.png" alt="">
+            </article>
+
+            <article class="card" style="--i: 4;">
+                <img src="img/CARDS/SHADOW-BLADE-ELF.png" alt="">
+            </article>
+
+            <article class="card" style="--i: 5">
+                <img src="img/CARDS/ASHBORN-REVENANT-I.png" alt="">
+            </article>
+            <article class="card" style="--i: 6">
+                <img src="img/CARDS/TITAN-OF-ECHOES.png" alt="">
+            </article>
+            <article class="card" style="--i: 7">
+                <img src="img/CARDS/SERAPH-OF-EMBERS.png" alt="">
+            </article>
+            <article class="card" style="--i: 8">
+                <img src="img/CARDS/TEMPESTIG-LEVIATHAN.png" alt="">
+            </article>
+            <article class="card" style="--i: 9">
+                <img src="img/CARDS/STROMBLADE-VALKYRIE.png" alt="">
+            </article>
+            <article class="card" style="--i: 10">
+                <img src="img/CARDS/GRIMROOT-SHAMAN.png" alt="">
+            </article>
+        </section>
+        <a href="market.html" class="md:w-[354px] w-[229px] h-[70px] bg-[#E6CF39] text-black md:text-[32px] text-[25px] rounded-[21px] items-center justify-center flex">Collectionner !</a>
+    </section>
+    <footer class="bg-[url('/img/footer-bg.png')] bg-cover bg-no-reapet h-[600px] flex flex-col items-center justify-center">
+        <div class="flex w-[80%] md:gap-[25%] justify-center mt-24 navigation-footer">
+            <nav class="flex flex-col">
+                <a href="#">Home</a>
+                <a href="#">Guide</a>
+                <a href="#">My Deck</a>
+                <a href="#">Market</a>
+                <a href="#">Favorite</a>
+            </nav>
+            <nav class="flex flex-col">
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ </a>
+                <a href="#">About Us</a>
+            </nav>
+            <nav class="flex flex-col">
+                <a href="#">Cookies</a>
+                <a href="#">Our Story</a>
+                <a href="#">Our Bakeries</a>
+                <a href="#">Join Our Team</a>
+            </nav>
+        </div>
+        <div class="flex md:gap-8 icons">
+            <img src="/img/instagram (1).png" alt="" class="w-[60px]">
+            <img src="/img/twitter.png" alt="" class="w-[60px]">
+            <img src="/img/windows-logo.png" alt="" class="w-[60px]">
+            <img src="/img/app.png" alt="" class="w-[60px]">
+            <img src="/img/google-play (1).png" alt="" class="w-[60px]">
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
