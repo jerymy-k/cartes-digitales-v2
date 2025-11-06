@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>PHAGEBORN | Home</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/input.css">
+</head>
+<body class="bg-[#181230] ">
+    <header class="flex md:justify-center items-center text-white  gap-[40px] h-[100px]" >
+        <div class="logo">
+            <img src="img/logo.png" alt="logo" class="w-[100px]">
+        </div>
+        <div class="navbar flex  w-[75%] justify-between text-[20px] items-center "  >
+            <a href="guide.html">Guide</a>
+            <a href="market.html">Market</a>
+            <a href="index.html" class="text-[40px] ">Home</a>
+            <a href="deck.html">My Deck</a>
+            <a href="favorites.html">Favorite</a>
+        </div>
+        <button class="text-[20px] border-4 border-[#FF282C] p-[15px] rounded-[25px] justify-self-center flex bg-[#FF282C] cartpage">Cart</button>
+        <span class="text-[30px] md:hidden lg:hidden menu-btn">☰</span>
+    </header>
+    <div class="menu_slider fixed top-0 right-0 h-full w-[320px] bg-gray-900 text-white p-5 shadow-2xl translate-x-full  transition-transform duration-300 z-60 ">
+        <span class="fixed close-menu">X</span>
+        <div class="flex flex-col items-center justify-center h-full gap-10 ">
+            <a href="guide.html">Guide</a>
+            <a href="market.html">Market</a>
+            <a href="index.html" class="text-[40px]">Home</a>
+            <a href="deck.html">My Deck</a>
+            <a href="favorites.html">Favorite</a>
+            <button class="text-[20px] border-4 border-[#FF282C] p-[15px] rounded-[25px] justify-self-center flex bg-[#FF282C] cartpage">Cart</button>
+        </div>
+    </div>
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-[320px] bg-gray-900 text-white p-5 shadow-2xl translate-x-full transition-transform duration-300 z-60 flex flex-col">
+    
+        <div class="flex-1 mb-4 overflow-y-scroll cartscrollbar">
+            <span class="cursor-pointer closeCart">X</span>
+            <h2 class="mb-4 text-xl font-bold text-center">Cart</h2>
+            <div id="panier" class="flex-1 mb-4 data"></div>
+        </div>
+
+        <div id="totalContainer" class="pt-4 border-t border-gray-700">
+        <div class="flex justify-between mb-3 text-lg font-semibold">
+            <span>Total</span>
+            <span id="totalPrice" class="text-yellow-400">0 EC</span>
+        </div>
+        <button id="checkoutBtn" class="w-full py-2 mb-2 transition bg-green-500 rounded-lg hover:bg-green-600">Acheter</button>
+        <button class="w-full py-2 bg-red-500 rounded-lg closeCart">Close</button>
+        </div>
+
+    </div>
+
+    <section class="text-center w-[90%] flex flex-col justify-self-center gap-[50px] items-center pb-[50px]">
+        <h1 class=" h1-allpage text-[#E6CF39] md:text-[48px] font-bold text-[40px] ">Navigation entre les fragments</h1>
+        <p>
+            Parcourez les pages du marché comme on feuillette un grimoire ancien. Chaque
+            fragment contient des cartes uniques, prêtes à rejoindre votre collection. 
+            Utilisez les icônes ci-dessous pour voyager entre les chapitres de votre quête.
+        </p>
+        <h2 class="rareteicons flex gap-[10%] justify-center">Filtrer par rareté</h2>
+        <div class="rareteicons flex gap-[10%] justify-center ">
+            <img src="img/rarete (1).png" alt="" class="filtre">
+            <img src="img/rarete (2).png" alt="" class="filtre">
+            <img src="img/rarete (3).png" alt="" class="filtre">
+            <img src="img/rarete (4).png" alt="" class="filtre">
+            <img src="img/rarete (5).png" alt="" class="filtre">
+        </div>
+    </section>
+    <section class="grid justify-center grid-cols-1 pb-10 md:grid-cols-3 gap-x-32 gap-y-11 justify-self-center allcontainer" id="container_cards">
+        
+    </section>
+    </section>
+    <div class="flex w-[40%] justify-between justify-self-center pb-[30px]">
+        <a href="#"><img src="img/nav (1).png" alt="" class="pagination"></a>
+        <a href="#"><img src="img/nav (2).png" alt="" class="pagination"></a>
+        <a href="#"><img src="img/nav (3).png" alt="" class="pagination"></a>
+    </div>
+    <footer class="bg-[url('/img/footer-bg.png')] bg-cover bg-no-reapet h-[600px] flex flex-col items-center justify-center">
+        <div class="flex w-[80%] gap-[25%] justify-center mt-24">
+            <nav class="flex flex-col">
+                <a href="#">Home</a>
+                <a href="#">Guide</a>
+                <a href="#">My Deck</a>
+                <a href="#">Market</a>
+                <a href="#">Favorite</a>
+            </nav>
+            <nav class="flex flex-col">
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ </a>
+                <a href="#">About Us</a>
+            </nav>
+            <nav class="flex flex-col">
+                <a href="#">Cookies</a>
+                <a href="#">Our Story</a>
+                <a href="#">Our Bakeries</a>
+                <a href="#">Join Our Team</a>
+            </nav>
+        </div>
+        <div class="flex gap-8">
+            <img src="/img/instagram (1).png" alt="" class="w-[60px]">
+            <img src="/img/twitter.png" alt="" class="w-[60px]">
+            <img src="/img/windows-logo.png" alt="" class="w-[60px]">
+            <img src="/img/app.png" alt="" class="w-[60px]">
+            <img src="/img/google-play (1).png" alt="" class="w-[60px]">
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
