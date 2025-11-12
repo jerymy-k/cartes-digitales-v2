@@ -149,11 +149,11 @@ let index = 0;
 const card_container = document.querySelector('#container_cards');
 const myDeckContainer = document.querySelector('#container_mydeck');
 
-if (window.location.pathname.includes("/market.html")){
+if (window.location.pathname.includes("/market.html")) {
 
-    function marketAffichage(index){
-        card_container.innerHTML = "" ;
-        for(let i = index ; i < index + 9 &&  i < cards.length ; i++){
+    function marketAffichage(index) {
+        card_container.innerHTML = "";
+        for (let i = index; i < index + 9 && i < cards.length; i++) {
             card_container.innerHTML += `
                 <div class="flex flex-col gap-[20px]">
                     <img src="${cards[i].image}" alt="">
@@ -175,30 +175,30 @@ if (window.location.pathname.includes("/market.html")){
     pag[1].addEventListener('click', () => marketAffichage(9));
     pag[2].addEventListener('click', () => marketAffichage(18));
 
-    
+
     card_container.addEventListener('click', (e) => {
-        
-        if(e.target.classList.contains('btn-fav')) {
+
+        if (e.target.classList.contains('btn-fav')) {
             const id = e.target.dataset.id;
             const card = cards.find(c => c.id == id);
             let favourites = JSON.parse(localStorage.getItem('favourites')) || [];
 
             const exist = favourites.some(item => item.id == card.id);
-            if (!exist) {favourites.push(card);}
+            if (!exist) { favourites.push(card); }
 
             localStorage.setItem('favourites', JSON.stringify(favourites));
         }
 
-        if(e.target.classList.contains('btn-cart')) {
+        if (e.target.classList.contains('btn-cart')) {
             const id = e.target.dataset.id;
             const card = cards.find(c => c.id == id);
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
             const existingCard = cart.find(item => item.id == card.id);
-            
+
             if (existingCard) {
-                existingCard.quantity = existingCard.quantity+ 1;
+                existingCard.quantity = existingCard.quantity + 1;
             } else {
                 cart.push({
                     id: card.id,
@@ -217,16 +217,16 @@ if (window.location.pathname.includes("/market.html")){
 }
 if (window.location.pathname.includes("/deck.html") || window.location.pathname.includes("/market.html")) {
     const rarete = document.querySelectorAll('.filtre');
-    function affichageRarete(index , container) {
+    function affichageRarete(index, container) {
         container.innerHTML = '';
         for (let i = index; i < result_rarete.length; i++) {
-            if(myDeckContainer){
+            if (myDeckContainer) {
                 container.innerHTML += `
                 <div class="bg-gray-800 rounded-xl shadow-lg transform hover:scale-105 hover:rotate-1 transition-all duration-300">
                     <img src="${result_rarete[i].image}" alt="">
                 </div>
                 `;
-            }else{
+            } else {
                 container.innerHTML += `
                 <div class="flex flex-col gap-[20px] w-[100%]">
                     <img src="${result_rarete[i].image}" alt="">
@@ -241,16 +241,16 @@ if (window.location.pathname.includes("/deck.html") || window.location.pathname.
         }
     }
     rarete.forEach((btn, index) => {
-    const rarities = ["mythique", "epique", "rare", "legendaire", "commun"];
-    btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+        const rarities = ["mythique", "epique", "rare", "legendaire", "commun"];
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-    result_rarete = cards.filter(item => item.rarity === rarities[index]);
-        if (myDeckContainer) affichageRarete(0, myDeckContainer);
-        if (card_container) affichageRarete(0, card_container);
+            result_rarete = cards.filter(item => item.rarity === rarities[index]);
+            if (myDeckContainer) affichageRarete(0, myDeckContainer);
+            if (card_container) affichageRarete(0, card_container);
+        });
     });
-});
 }
 // ------------------------- cart -------------------------------
 const cartpage = document.querySelectorAll('.cartpage');
@@ -270,8 +270,8 @@ function cartAffichage() {
         panier.innerHTML = "<p class='text-gray-400'>panier est vide </p>";
         totalContainer.classList.add('hidden');
         setTimeout(() => {
-        closeCartSidebar();
-        localStorage.removeItem('cart');
+            closeCartSidebar();
+            localStorage.removeItem('cart');
         }, 1500);
         return;
     }
@@ -304,11 +304,11 @@ function cartAffichage() {
 
     document.querySelectorAll('.remove-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-        const id = e.target.dataset.id;
-        let carts = JSON.parse(localStorage.getItem('cart')) || [];
-        carts = carts.filter(item => item.id != id);
-        localStorage.setItem('cart', JSON.stringify(carts));
-        cartAffichage();
+            const id = e.target.dataset.id;
+            let carts = JSON.parse(localStorage.getItem('cart')) || [];
+            carts = carts.filter(item => item.id != id);
+            localStorage.setItem('cart', JSON.stringify(carts));
+            cartAffichage();
         });
     });
 
@@ -325,30 +325,30 @@ function cartAffichage() {
                 localStorage.setItem('cart', JSON.stringify(carts));
                 cartAffichage();
             }
+        });
     });
-});
 
     document.querySelectorAll('.increase').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const id = e.target.dataset.id;
-        let carts = JSON.parse(localStorage.getItem('cart')) || [];
-        let product = carts.find(item => item.id == id);
-        if (product) {
-            product.quantity += 1;
-            localStorage.setItem('cart', JSON.stringify(carts));
-            cartAffichage();
-        }
-    });
+        btn.addEventListener('click', (e) => {
+            const id = e.target.dataset.id;
+            let carts = JSON.parse(localStorage.getItem('cart')) || [];
+            let product = carts.find(item => item.id == id);
+            if (product) {
+                product.quantity += 1;
+                localStorage.setItem('cart', JSON.stringify(carts));
+                cartAffichage();
+            }
+        });
     });
 
     localStorage.setItem('cart', JSON.stringify(carts));
 }
 
 cartpage.forEach(btn => {
-    btn.addEventListener('click' , () => {
+    btn.addEventListener('click', () => {
         cartAffichage();
-    cartSidebar.classList.remove('translate-x-full');
-    cartSidebar.classList.add('translate-x-0');
+        cartSidebar.classList.remove('translate-x-full');
+        cartSidebar.classList.add('translate-x-0');
     })
 });
 
@@ -365,13 +365,13 @@ function closeCartSidebar() {
 
 checkoutBtn.addEventListener('click', () => {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
+
     if (cart.length > 0) {
         let myDeck = JSON.parse(localStorage.getItem('myDeck')) || [];
-        
+
         cart.forEach(item => {
             const existingCard = myDeck.find(card => card.id == item.id);
-            
+
             if (existingCard) {
                 existingCard.quantity = (existingCard.quantity || 1) + item.quantity;
             } else {
@@ -385,9 +385,9 @@ checkoutBtn.addEventListener('click', () => {
                 });
             }
         });
-        
+
         localStorage.setItem('myDeck', JSON.stringify(myDeck));
-        
+
         alert("L'opération d'achat a été effectuée avec succès.");
         localStorage.removeItem('cart');
         cartAffichage();
@@ -398,12 +398,12 @@ checkoutBtn.addEventListener('click', () => {
 function myDeckAffichage() {
     myDeckContainer.innerHTML = "";
     const myDeck = JSON.parse(localStorage.getItem('myDeck')) || [];
-    
+
     if (myDeck.length === 0) {
         myDeckContainer.innerHTML = "<p><p class='text-gray-400 text-center col-start-1 col-end-4 row-start-1 row-end-2'>Vous n'avez aucune carte pour le moment</p>";
         return;
     }
-    
+
     for (let i = 0; i < myDeck.length; i++) {
         const itemTotal = parseFloat(myDeck[i].price) * myDeck[i].quantity;
         myDeckContainer.innerHTML += `
@@ -422,16 +422,16 @@ if (window.location.pathname.includes("/deck.html")) {
         myDeckAffichage();
     });
     const alldeck = document.getElementById('alldeck');
-    alldeck.addEventListener('click' , () => {
-    myDeckAffichage();
+    alldeck.addEventListener('click', () => {
+        myDeckAffichage();
     });
 }
 // ------------------------- favourite -------------------------------
 const favouriteAffichage = document.getElementById('container_favorites');
 
-if(window.location.pathname.includes("/favorites.html")){
+if (window.location.pathname.includes("/favorites.html")) {
     let favourites = JSON.parse(localStorage.getItem('favourites')) || [];
-    if (favourites.length == 0){
+    if (favourites.length == 0) {
         localStorage.removeItem('favourites');
         favouriteAffichage.innerHTML += `<p><p class="text-center">Vous n’avez encore aucune carte en favoris</p>`
     }
@@ -451,7 +451,7 @@ if(window.location.pathname.includes("/favorites.html")){
             `;
         }
     }
-    
+
     if (favourites.length > 0) {
         favourite_Affichage();
         favouriteAffichage.addEventListener('click', (e) => {
@@ -461,131 +461,131 @@ if(window.location.pathname.includes("/favorites.html")){
                 localStorage.setItem('favourites', JSON.stringify(favourites));
                 favourite_Affichage();
             }
-            
+
         });
     }
 }
 //-----------------home ---------------------
-if (window.location.pathname.includes("/index.html")){
+if (window.location.pathname.includes("/index.html")) {
     document.addEventListener("DOMContentLoaded", () => {
-    const cardStack = document.querySelector(".card-stack");
-    let cards = [...document.querySelectorAll(".card")];
-    let isSwiping = false;
-    let startX = 0;
-    let currentX = 0;
-    let animationFrameId = null;
+        const cardStack = document.querySelector(".card-stack");
+        let cards = [...document.querySelectorAll(".card")];
+        let isSwiping = false;
+        let startX = 0;
+        let currentX = 0;
+        let animationFrameId = null;
 
-    const getDurationFromCSS = (
-    variableName,
-    element = document.documentElement
-    ) => {
-    const value = getComputedStyle(element)
-        ?.getPropertyValue(variableName)
-        ?.trim();
-    if (!value) return 0;
-    if (value.endsWith("ms")) return parseFloat(value);
-    if (value.endsWith("s")) return parseFloat(value) * 1000;
-    return parseFloat(value) || 0;
-    };
+        const getDurationFromCSS = (
+            variableName,
+            element = document.documentElement
+        ) => {
+            const value = getComputedStyle(element)
+                ?.getPropertyValue(variableName)
+                ?.trim();
+            if (!value) return 0;
+            if (value.endsWith("ms")) return parseFloat(value);
+            if (value.endsWith("s")) return parseFloat(value) * 1000;
+            return parseFloat(value) || 0;
+        };
 
-    const getActiveCard = () => cards[0];
+        const getActiveCard = () => cards[0];
 
-    const updatePositions = () => {
-        cards.forEach((card, i) => {
-            card.style.setProperty("--i", i + 1);
-            card.style.setProperty("--swipe-x", "0px");
-            card.style.setProperty("--swipe-rotate", "0deg");
-            card.style.opacity = "1";
-        });
-    };
+        const updatePositions = () => {
+            cards.forEach((card, i) => {
+                card.style.setProperty("--i", i + 1);
+                card.style.setProperty("--swipe-x", "0px");
+                card.style.setProperty("--swipe-rotate", "0deg");
+                card.style.opacity = "1";
+            });
+        };
 
-    const applySwipeStyles = (deltaX) => {
-    const card = getActiveCard();
-    if (!card) return;
-    card.style.setProperty("--swipe-x", `${deltaX}px`);
-    card.style.setProperty("--swipe-rotate", `${deltaX * 0.2}deg`);
-    card.style.opacity = 1 - Math.min(Math.abs(deltaX) / 100, 1) * 0.75;
-    };
+        const applySwipeStyles = (deltaX) => {
+            const card = getActiveCard();
+            if (!card) return;
+            card.style.setProperty("--swipe-x", `${deltaX}px`);
+            card.style.setProperty("--swipe-rotate", `${deltaX * 0.2}deg`);
+            card.style.opacity = 1 - Math.min(Math.abs(deltaX) / 100, 1) * 0.75;
+        };
 
-    const handleStart = (clientX) => {
-    if (isSwiping) return;
-    isSwiping = true;
-    startX = currentX = clientX;
-    const card = getActiveCard();
-    card && (card.style.transition = "none");
-    };
+        const handleStart = (clientX) => {
+            if (isSwiping) return;
+            isSwiping = true;
+            startX = currentX = clientX;
+            const card = getActiveCard();
+            card && (card.style.transition = "none");
+        };
 
-    const handleMove = (clientX) => {
-    if (!isSwiping) return;
-    cancelAnimationFrame(animationFrameId);
-    animationFrameId = requestAnimationFrame(() => {
-    currentX = clientX;
-    const deltaX = currentX - startX;
-    applySwipeStyles(deltaX);
+        const handleMove = (clientX) => {
+            if (!isSwiping) return;
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = requestAnimationFrame(() => {
+                currentX = clientX;
+                const deltaX = currentX - startX;
+                applySwipeStyles(deltaX);
 
-    if (Math.abs(deltaX) > 50) handleEnd();
+                if (Math.abs(deltaX) > 50) handleEnd();
+            });
+        };
+
+        const handleEnd = () => {
+            if (!isSwiping) return;
+            cancelAnimationFrame(animationFrameId);
+
+            const deltaX = currentX - startX;
+            const threshold = 50;
+            const duration = getDurationFromCSS("--card-swap-duration");
+            const card = getActiveCard();
+
+            if (card) {
+                card.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
+
+                if (Math.abs(deltaX) > threshold) {
+                    const direction = Math.sign(deltaX);
+
+                    card.style.setProperty("--swipe-x", `${direction * 300}px`);
+                    card.style.setProperty("--swipe-rotate", `${direction * 20}deg`);
+
+                    setTimeout(() => {
+                        card.style.setProperty("--swipe-rotate", `${-direction * 20}deg`);
+                    }, duration * 0.5);
+
+                    setTimeout(() => {
+                        cards = [...cards.slice(1), card];
+                        updatePositions();
+                    }, duration);
+                } else {
+                    applySwipeStyles(0);
+                }
+            }
+
+            isSwiping = false;
+            startX = currentX = 0;
+        };
+
+        const addEventListeners = () => {
+            cardStack?.addEventListener("pointerdown", ({ clientX }) =>
+                handleStart(clientX)
+            );
+            cardStack?.addEventListener("pointermove", ({ clientX }) =>
+                handleMove(clientX)
+            );
+            cardStack?.addEventListener("pointerup", handleEnd);
+        };
+
+        updatePositions();
+        addEventListeners();
     });
-    };
-
-    const handleEnd = () => {
-    if (!isSwiping) return;
-    cancelAnimationFrame(animationFrameId);
-
-    const deltaX = currentX - startX;
-    const threshold = 50;
-    const duration = getDurationFromCSS("--card-swap-duration");
-    const card = getActiveCard();
-
-    if (card) {
-        card.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
-
-        if (Math.abs(deltaX) > threshold) {
-        const direction = Math.sign(deltaX);
-
-        card.style.setProperty("--swipe-x", `${direction * 300}px`);
-        card.style.setProperty("--swipe-rotate", `${direction * 20}deg`);
-
-        setTimeout(() => {
-          card.style.setProperty("--swipe-rotate", `${-direction * 20}deg`);
-        }, duration * 0.5);
-
-        setTimeout(() => {
-            cards = [...cards.slice(1), card];
-            updatePositions();
-        }, duration);
-        } else {
-        applySwipeStyles(0);
-        }
-    }
-
-    isSwiping = false;
-    startX = currentX = 0;
-    };
-
-    const addEventListeners = () => {
-    cardStack?.addEventListener("pointerdown", ({ clientX }) =>
-        handleStart(clientX)
-    );
-    cardStack?.addEventListener("pointermove", ({ clientX }) =>
-        handleMove(clientX)
-    );
-    cardStack?.addEventListener("pointerup", handleEnd);
-    };
-
-    updatePositions();
-    addEventListeners();
-});
 
 }
 // ---------------humburgermenu--------------
 const btn_menu = document.querySelector('.menu-btn');
 const btn_menu_close = document.querySelector('.close-menu');
-const menuslider =document.querySelector('.menu_slider');
-btn_menu_close.addEventListener('click' , () =>{
+const menuslider = document.querySelector('.menu_slider');
+btn_menu_close.addEventListener('click', () => {
     menuslider.classList.remove('translate-x-0');
     menuslider.classList.add('translate-x-full');
 });
-btn_menu.addEventListener('click' , () => {
+btn_menu.addEventListener('click', () => {
     menuslider.classList.remove('translate-x-full');
     menuslider.classList.add('translate-x-0');
 });
@@ -600,6 +600,137 @@ faqItems.forEach(item => {
         question.classList.toggle('text-white');
     });
 });
+// -----------------play-----------------------
+if (window.location.pathname.includes("/play.html")) {
+    let turn = "jouer";
+    let draw = 1;
+    const playdeckcontainer = document.getElementById('mydeckplay');
+    const myhand = document.getElementById('myhand');
+    let myDeck = JSON.parse(localStorage.getItem('myDeck')) || [];
+    let cardhand;
 
+    window.addEventListener('DOMContentLoaded', () => {
+        playdeckaffichage();
+    });
+    function playdeckaffichage() {
+        playdeckcontainer.innerHTML = "";
+        myDeck.forEach(carta => {
+            const element = document.createElement('div');
+            element.className = `bg-gray-800 flex`
+            element.innerHTML = `
+                <img src="${carta.image}" alt="" width='200px'" >
+            `;
+            playdeckcontainer.appendChild(element);
+            element.addEventListener('click', () => {
+                if (draw == 1) {
+                    let lengthmyhand = myhand.children.length;
+                    if (lengthmyhand < 5) {
+                        carta.quantity -= 1;
+                        myhand.innerHTML += `
+                            <img src="${carta.image}" alt="" class="w-[130px] rounded-[10px] h-[180px] card-id">
+                        `;
+                        draw = 0;
+                        cardhand = document.querySelectorAll(`.card-id`);
+                        cardhand.forEach(myhandcard => {
+                            myhandcard.addEventListener('dragstart', () => {
+                                myhandcard.classList.add('dragging');
+                            });
+                            myhandcard.addEventListener('dragend', () => {
+                                myhandcard.classList.remove('dragging');
+                            });
+                        });
+                        if (carta.quantity < 1) {
+                            myDeck = myDeck.filter(f => f.id !== carta.id);
+                            console.log(myDeck);
+                            playdeckaffichage();
+                        }
+                    }
+                    else {
+                        alert('u can only have 5 cards');
+                    }
+                }
+            });
+        });
+    }
+    const arenacontainers = document.querySelectorAll('.arenacontainer');
+    const popup = document.querySelector('.popup');
+    const attack = document.querySelector('.attack-btn');
+    const deffence = document.querySelector('.deffence-btn');
+    arenacontainers.forEach((arenacontainer) => {
+        arenacontainer.addEventListener('dragenter', () => {
+            if (turn == "jouer") {
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
+            }
+        });
+        attack.addEventListener('click', () => {
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+        });
+        deffence.addEventListener('click', () => {
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+        });
+    });
+    function dragmouvment(e) {
+        if (turn == "jouer") {
+            const dragging = document.querySelector('.dragging');
+            const target = e.currentTarget;
+            e.preventDefault();
+            if (target.children.length <= 0) {
+                attack.onclick = () => {
+                    popup.classList.add('hidden');
+                    popup.classList.remove('flex');
+                    target.appendChild(dragging);
+                    e.preventDefault();
+                    turn = "adversire";
+                };
+                deffence.onclick = () => {
+                    popup.classList.add('hidden');
+                    popup.classList.remove('flex');
+                    target.classList.add('rotate-90');
+                    target.appendChild(dragging);
+                    e.preventDefault();
+                    turn = "adversire";
+                };
+            } else {
+                return;
+            }
+        } else {
+            return;
+        }
+    }
 
+    const enemy = document.querySelectorAll('.enemy');
+    const endturnbtn = document.querySelector('.endturnbtn');
+    function drawRandomCard() {
+        let randomIndex = Math.floor(Math.random() * cards.length);
+        return cards[randomIndex];
+    }
+    function chooseAtcDef() {
+        let random = Math.floor(Math.random() * 2);
+        return random;
+    }
+    let i = 0;
+    endturnbtn.onclick = () => {
+        if (turn == "adversire") {
+            let randomCard = drawRandomCard();
+            enemy[i].innerHTML = `<img src="${randomCard.image}" alt="" class="w-[130px] rounded-[10px] h-[180px]">`
+            turn = 'jouer';
+            draw = 1;
+            let chosed = chooseAtcDef();
+            console.log(chosed);
+            if(chosed == 0){
+                enemy[i].classList.add('rotate-90');
+            }
+            i++;
+        }
+    }
+}
+
+// if (myDeck.length === 0) {
+//     playdeckaffichage.innerHTML = "<p class='text-gray-400 text-center col-start-1 col-end-4 row-start-1 row-end-2'>Vous n'avez aucune carte pour le moment</p>";
+//     return;
+// }
+// }
 

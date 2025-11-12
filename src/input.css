@@ -151,4 +151,10 @@ main{
     }
 }
 
-
+#mydeckplay::-webkit-scrollbar{
+    display: none;
+}
+.endturnbtn{
+    width: 150px;
+    text-align: center;
+}

@@ -2,12 +2,14 @@
 module.exports = {
   content: [
     "./index.html",
-    "./cart.html",
     "./deck.html",
     "./favorites.html",
     "./guide.html",
     "./market.html",
-    "./src/**/*.{html,js}"
+    "./play.html",
+    "./src/**/*.{html,js}",
+    "./dist/**/*.{html,js}",
+
   ],
   theme: {
     extend: {},
