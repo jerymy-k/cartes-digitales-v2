@@ -603,7 +603,6 @@ faqItems.forEach(item => {
 // -----------------play-----------------------
 if (window.location.pathname.includes("/play.html")) {
     let turn = "jouer";
-    let draw = 1;
     const playdeckcontainer = document.getElementById('mydeckplay');
     const myhand = document.getElementById('myhand');
     let myDeck = JSON.parse(localStorage.getItem('myDeck')) || [];
@@ -622,32 +621,28 @@ if (window.location.pathname.includes("/play.html")) {
             `;
             playdeckcontainer.appendChild(element);
             element.addEventListener('click', () => {
-                if (draw == 1) {
-                    let lengthmyhand = myhand.children.length;
-                    if (lengthmyhand < 5) {
-                        carta.quantity -= 1;
-                        myhand.innerHTML += `
+                let lengthmyhand = myhand.children.length;
+                if (lengthmyhand < 5) {
+                    carta.quantity -= 1;
+                    myhand.innerHTML += `
                             <img src="${carta.image}" alt="" class="w-[130px] rounded-[10px] h-[180px] card-id">
                         `;
-                        draw = 0;
-                        cardhand = document.querySelectorAll(`.card-id`);
-                        cardhand.forEach(myhandcard => {
-                            myhandcard.addEventListener('dragstart', () => {
-                                myhandcard.classList.add('dragging');
-                            });
-                            myhandcard.addEventListener('dragend', () => {
-                                myhandcard.classList.remove('dragging');
-                            });
+                    cardhand = document.querySelectorAll(`.card-id`);
+                    cardhand.forEach(myhandcard => {
+                        myhandcard.addEventListener('dragstart', () => {
+                            myhandcard.classList.add('dragging');
                         });
-                        if (carta.quantity < 1) {
-                            myDeck = myDeck.filter(f => f.id !== carta.id);
-                            console.log(myDeck);
-                            playdeckaffichage();
-                        }
+                        myhandcard.addEventListener('dragend', () => {
+                            myhandcard.classList.remove('dragging');
+                        });
+                    });
+                    if (carta.quantity < 1) {
+                        myDeck = myDeck.filter(f => f.id !== carta.id);
+                        playdeckaffichage();
                     }
-                    else {
-                        alert('u can only have 5 cards');
-                    }
+                }
+                else {
+                    alert('u can only have 5 cards');
                 }
             });
         });
@@ -656,28 +651,17 @@ if (window.location.pathname.includes("/play.html")) {
     const popup = document.querySelector('.popup');
     const attack = document.querySelector('.attack-btn');
     const deffence = document.querySelector('.deffence-btn');
-    arenacontainers.forEach((arenacontainer) => {
-        arenacontainer.addEventListener('dragenter', () => {
-            if (turn == "jouer") {
-                popup.classList.remove('hidden');
-                popup.classList.add('flex');
-            }
-        });
-        attack.addEventListener('click', () => {
-            popup.classList.add('hidden');
-            popup.classList.remove('flex');
-        });
-        deffence.addEventListener('click', () => {
-            popup.classList.add('hidden');
-            popup.classList.remove('flex');
-        });
-    });
+
     function dragmouvment(e) {
         if (turn == "jouer") {
             const dragging = document.querySelector('.dragging');
             const target = e.currentTarget;
             e.preventDefault();
-            if (target.children.length <= 0) {
+            let targetlength = target.children.length;
+            console.log(targetlength);
+            if (targetlength == 0) {
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
                 attack.onclick = () => {
                     popup.classList.add('hidden');
                     popup.classList.remove('flex');
@@ -700,7 +684,6 @@ if (window.location.pathname.includes("/play.html")) {
             return;
         }
     }
-
     const enemy = document.querySelectorAll('.enemy');
     const endturnbtn = document.querySelector('.endturnbtn');
     function drawRandomCard() {
@@ -719,18 +702,11 @@ if (window.location.pathname.includes("/play.html")) {
             turn = 'jouer';
             draw = 1;
             let chosed = chooseAtcDef();
-            console.log(chosed);
-            if(chosed == 0){
+            if (chosed == 0) {
                 enemy[i].classList.add('rotate-90');
             }
             i++;
         }
     }
 }
-
-// if (myDeck.length === 0) {
-//     playdeckaffichage.innerHTML = "<p class='text-gray-400 text-center col-start-1 col-end-4 row-start-1 row-end-2'>Vous n'avez aucune carte pour le moment</p>";
-//     return;
-// }
-// }
 
