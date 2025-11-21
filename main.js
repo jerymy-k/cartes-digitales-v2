@@ -58,7 +58,7 @@ const cards = [
     {
         id: 9,
         name: "ASHBORN-REVENANT",
-        price: 1200,
+        price: 3000,
         rarity: "rare",
         image: "img/CARDS/ASHBORN-REVENANT-II.png"
     },
@@ -155,7 +155,7 @@ if (window.location.pathname.includes("/market.html")) {
         card_container.innerHTML = "";
         for (let i = index; i < index + 9 && i < cards.length; i++) {
             card_container.innerHTML += `
-                <div class="flex flex-col gap-[20px]">
+                <div class="flex flex-col gap-[20px] foronecard">
                     <img src="${cards[i].image}" alt="">
                     <div class="flex items-center justify-between">
                         <img src="img/heart 1.png" alt="" class="btn-fav" data-id="${cards[i].id}">
@@ -298,7 +298,7 @@ function cartAffichage() {
             </div>
         `;
     }
-
+    
     totalContainer.classList.remove('hidden');
     totalPriceElement.textContent = total.toFixed(2) + " EC";
 
@@ -709,4 +709,3 @@ if (window.location.pathname.includes("/play.html")) {
         }
     }
 }
-
